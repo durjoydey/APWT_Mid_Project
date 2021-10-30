@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Myorder;
+
 class MyorderController extends Controller
 {
     
@@ -32,7 +34,7 @@ class MyorderController extends Controller
             ]
         );
 
-        $var = new Delivery();
+        $var = new Myorder();
         $var->O_id= $request->O_id;
         $var->user_id = $request->user_id;
         $var->U_username = $request->U_username;
@@ -59,10 +61,12 @@ class MyorderController extends Controller
 
     public function editSubmit(Request $request){
         $var = Myorder::where('id',$request->id)->first();
-        $var->name= $request->name;
-        $var->dob = $request->dob;
-        $var->email = $request->email;
-        $var->phone=$request->phone;
+        $var->O_id= $request->O_id;
+        $var->user_id = $request->user_id;
+        $var->U_username = $request->U_username;
+        $var->P_tprice=$request->P_tprice;
+        $var->Paymenttype = $request->Paymenttype;
+        $var->O_status=$request->O_status;
         $var->save();
         return redirect()->route('myorder.list');
 

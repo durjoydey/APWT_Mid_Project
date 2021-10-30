@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('content')
     <form action="{{route('user.create')}}" class="col-md-6" method="post">
@@ -17,21 +18,21 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        </div>
+        <div>
             <span>Address</span>
             <input type="text" name="U_address" value="{{old('U_address')}}" class="form-control">
             @error('U_address')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        </div>
+        <div>
             <span>Username</span>
             <input type="text" name="U_username" value="{{old('U_username')}}" class="form-control">
             @error('U_username')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        </div>
+        <div>
             <span>Email</span>
             <input type="email" name="U_email" value="{{old('U_email')}}" class="form-control">
             @error('U_email')
@@ -53,10 +54,10 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div>
+        <div >
       
       <span>Profile Picture</span>
-      <input type="select" name="U_profileimg" value="{{old('U_profileimg')}}" class="form-control">
+      <input type="hidden" name="U_profileimg" value="U_profileimg" class="form-control">
       @error('U_profileimg')
           <span class="text-danger">{{$message}}</span>
       @enderror

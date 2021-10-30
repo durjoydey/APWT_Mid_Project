@@ -48,7 +48,7 @@
         <div>
       
             <span>Product Image 1</span>
-            <input type="text" name="P_img1" value="{{old('P_img1')}}" class="form-control">
+            <input type="hidden" name="P_img1" value="{{old('P_img1')}}" class="form-control">
             @error('P_img1')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -56,7 +56,7 @@
         <div>
       
       <span>Product Image 2</span>
-      <input type="select" name="P_img2" value="{{old('P_img2')}}" class="form-control">
+      <input type="hidden" name="P_img2" value="{{old('P_img2')}}" class="form-control">
       @error('P_img2')
           <span class="text-danger">{{$message}}</span>
       @enderror
@@ -64,7 +64,7 @@
   <div>
       
       <span>Product Image 3</span>
-      <input type="select" name="P_img3" value="{{old('P_img3')}}" class="form-control">
+      <input type="hidden" name="P_img3" value="{{old('P_img3')}}" class="form-control">
       @error('P_img3')
           <span class="text-danger">{{$message}}</span>
       @enderror

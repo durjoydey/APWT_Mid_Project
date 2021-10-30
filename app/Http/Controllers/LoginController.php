@@ -4,23 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class LoginController extends Controller
 {
-    //
     public function Login(){
 
         return view('pages.login');
     }
     public function loginSubmit(Request $request){
-        $user = User::where('phone',$request->phone)
-                            ->where('password',md5($request->password))
-                            ->first();
-        if($user){
-            $request->session()->put('user',$user->name);
-            return redirect()->route('userdash');
-        }
+        $validate=$request->validate([
 
-        return back();
+
+            'U_username'=>'required',
+            'U_password'=>'required',
+       ],
+       [
+           'U_username.required'=>'Username required!',
+           
+           'U_password.required'=>'Password required!',
+        
+       ]
+       
+       );
+       return redirect()->route('home');
 
     }
     public function logout(){

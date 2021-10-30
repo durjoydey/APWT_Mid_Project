@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Product;
+
 class ProductController extends Controller
 {
     
@@ -21,9 +23,7 @@ class ProductController extends Controller
                 'P_categories'=>'required',
                 'P_quantity'=>'required',
                 'P_details'=>'required',
-                'P_img1'=>'required',
-                'P_img2'=>'required',
-                'P_img3'=>'required',
+               
             ],
             [
                 'P_id.required'=>'Please put Product ID!',
@@ -32,9 +32,7 @@ class ProductController extends Controller
                 'P_categories.required'=>'Please put Product Category!',
                 'P_quantity.required'=>'Please put Product Quantity',
                 'P_details.required'=>'Please put Product Details!',
-                'P_img1.required'=>'Please put Product Image 1!',
-                'P_img2.required'=>'Please put Product Image 2!',
-                'P_img3.required'=>'Please put Product Image 3!',
+               
             ]
         );
 
@@ -45,9 +43,7 @@ class ProductController extends Controller
         $var->P_categories=$request->P_categories;
         $var->P_quantity = $request->P_quantity;
         $var->P_details = $request->P_details;
-        $var->P_img1=$request->P_img1;
-        $var->P_img2=$request->P_img2;
-        $var->P_img3=$request->P_img3;
+       
         $var->save();
 
 
@@ -68,10 +64,15 @@ class ProductController extends Controller
 
     public function editSubmit(Request $request){
         $var = Product::where('id',$request->id)->first();
-        $var->name= $request->name;
-        $var->dob = $request->dob;
-        $var->email = $request->email;
-        $var->phone=$request->phone;
+        $var->P_id= $request->P_id;
+        $var->P_name = $request->P_name;
+        $var->P_price = $request->P_price;
+        $var->P_categories=$request->P_categories;
+        $var->P_quantity = $request->P_quantity;
+        $var->P_details = $request->P_details;
+        $var->P_img1=$request->P_img1;
+        $var->P_img2=$request->P_img2;
+        $var->P_img3=$request->P_img3;
         $var->save();
         return redirect()->route('product.list');
 

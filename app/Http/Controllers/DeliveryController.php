@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Delivery;
+
+
 class DeliveryController extends Controller
 {
     
@@ -36,7 +39,7 @@ class DeliveryController extends Controller
         $var->save();
 
 
-        return "Delivery Added";      
+        return redirect()->route('deliverycon.list');     
     }
     public function list(){
 
@@ -53,10 +56,10 @@ class DeliveryController extends Controller
 
     public function editSubmit(Request $request){
         $var = Delivery::where('id',$request->id)->first();
-        $var->name= $request->name;
-        $var->dob = $request->dob;
-        $var->email = $request->email;
-        $var->phone=$request->phone;
+        $var->Dman_id= $request->Dman_id;
+        $var->Order_id = $request->Order_id;
+        $var->D_Status = $request->D_Status;
+        $var->D_time=$request->D_time;
         $var->save();
         return redirect()->route('deliverycon.list');
 
