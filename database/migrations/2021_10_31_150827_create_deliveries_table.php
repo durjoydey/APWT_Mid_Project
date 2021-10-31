@@ -15,10 +15,14 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('Dman_id',50);
 
-            $table->string('Order_id',50);
+            $table->unsignedBigInteger('Ord_id');
+
+            $table->foreign('Ord_id')->references('id')->on('myorders');
+
+            $table->string('Pay_price',50);
+
+            $table->string('D_username',50);
 
             $table->string('D_Status',50);
 

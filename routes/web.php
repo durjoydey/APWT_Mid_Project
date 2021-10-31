@@ -6,6 +6,7 @@ use App\Http\Controllers\DmanController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MyorderController;
+use App\Http\Controllers\OrderdetailController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -50,6 +51,15 @@ Route::get('/myorder/list',[MyorderController::class,'list'])->name('myorder.lis
 Route::get('/myorder/edit/{id}/{name}',[MyorderController::class,'edit']);
 Route::post('/myorder/edit',[MyorderController::class,'editSubmit'])->name('myorder.edit');
 Route::get('/myorder/delete/{id}/{name}',[MyorderController::class,'delete']);
+
+//orderdetail routes
+Route::get('/orderdetail/create',[OrderdetailController::class,'create'])->name('orderdetail.create');
+Route::post('/orderdetail/create',[OrderdetailController::class,'createSubmit'])->name('orderdetail.create');
+Route::get('/orderdetail/list',[OrderdetailController::class,'list'])->name('orderdetail.list');
+Route::get('/orderdetail/edit/{id}/{name}',[OrderdetailController::class,'edit']);
+Route::post('/orderdetail/edit',[OrderdetailController::class,'editSubmit'])->name('orderdetail.edit');
+Route::get('/orderdetail/delete/{id}/{name}',[OrderdetailController::class,'delete']);
+
 
 
 Route::get('/login',[LoginController::class,'login'])->name('login');

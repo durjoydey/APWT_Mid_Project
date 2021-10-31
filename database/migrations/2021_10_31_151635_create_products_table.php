@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
 
             $table->string('P_price',20);
 
-            $table->string('P_categories',30)->unique();
+            $table->string('Cat_id',20);
 
             $table->string('P_quantity',50)->unique();
 

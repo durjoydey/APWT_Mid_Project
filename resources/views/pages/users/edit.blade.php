@@ -1,9 +1,9 @@
-@if(Session::get('user')) {{Session::get('user')}} 
-        <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+
 
 @extends('layouts.app')
 @section('content')
 <form action="{{route('user.edit')}}" class="col-md-6" method="post">
+<h1>Edit Your Imformation</h1>
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
         <input type="hidden" name="id" value="{{$user->id}}">
@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-4 form-group">
             <span>Profile Picture</span>
-            <input type="hidden" name="U_profileimg" value="U_profileimg" class="form-control">
+            <input type="text" name="U_profileimg" value="{{$user->U_profileimg}}" class="form-control">
             @error('U_profileimg')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -69,4 +69,3 @@
     </form>
 @endsection
 
-@endif

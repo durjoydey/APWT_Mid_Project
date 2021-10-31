@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Systemuser;
 
 class DmanController extends Controller
@@ -61,6 +62,13 @@ class DmanController extends Controller
 
 
         return redirect()->route('login');
+    }
+    public function edit(Request $request){
+        //
+        $id = $request->id;
+        $users = Systemuser::where('id',$id)->first();
+        return view('pages.users.edit')->with('users', $users);
+
     }
     public function editSubmit(Request $request){
         $var = Systemuser::where('id',$request->id)->first();

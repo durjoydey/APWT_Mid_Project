@@ -3,6 +3,7 @@
     <form action="{{route('product.create')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
+        <h1>Add Products</h1>
         
         <div class="col-md-4 form-group">
             <span>Product ID</span>
@@ -25,9 +26,9 @@
             @enderror
         </div>
         <div>
-            <span>Product Category</span>
-            <input type="text" name="P_categories" value="{{old('P_categories')}}" class="form-control">
-            @error('P_categories')
+            <span>Category ID</span>
+            <input type="text" name="Cat_id" value="{{old('Cat_id')}}" class="form-control">
+            @error('Cat_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
@@ -40,7 +41,7 @@
         </div>
         <div>
             <span>Product Details</span>
-            <input type="text" name="P_details" value="{{old('P_details')}}" class="form-control">
+            <input type="text" name="P_details" value="{{old('P_details')}}"  class="form-control">
             @error('P_details')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -48,7 +49,7 @@
         <div>
       
             <span>Product Image 1</span>
-            <input type="hidden" name="P_img1" value="{{old('P_img1')}}" class="form-control">
+            <input type="hidden" name="P_img1" value="A.jpg"  class="form-control">
             @error('P_img1')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -56,7 +57,7 @@
         <div>
       
       <span>Product Image 2</span>
-      <input type="hidden" name="P_img2" value="{{old('P_img2')}}" class="form-control">
+      <input type="hidden" name="P_img2" value="A.jpg"  class="form-control">
       @error('P_img2')
           <span class="text-danger">{{$message}}</span>
       @enderror
@@ -64,7 +65,7 @@
   <div>
       
       <span>Product Image 3</span>
-      <input type="hidden" name="P_img3" value="{{old('P_img3')}}" class="form-control">
+      <input type="hidden" name="P_img3" value="A.jpg"   class="form-control">
       @error('P_img3')
           <span class="text-danger">{{$message}}</span>
       @enderror

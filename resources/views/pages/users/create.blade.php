@@ -3,6 +3,7 @@
 @section('content')
     <form action="{{route('user.create')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
+        <h1>Create Your Account</h1>
         {{csrf_field()}}
         
         <div class="col-md-4 form-group">

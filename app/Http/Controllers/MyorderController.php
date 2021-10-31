@@ -28,9 +28,9 @@ class MyorderController extends Controller
                 'O_id.required'=>'Please put Order ID!',
                 'user_id.required'=>'Please put User ID!',
                 'U_username.required'=>'Please put Username!',
-                'P_tprice.required'=>'Please put Price!',
-                'Paymenttype.required'=>'Please put Payment!',
-                'O_status.required'=>'Please put Order!',
+                'P_tprice.required'=>'Please put Total Price!',
+                'Paymenttype.required'=>'Please put Payment Type!',
+                'O_status.required'=>'Please put Order Status!',
             ]
         );
 

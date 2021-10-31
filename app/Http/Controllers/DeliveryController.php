@@ -6,34 +6,43 @@ use Illuminate\Http\Request;
 
 use App\Models\Delivery;
 
+use App\Models\Myorder;
+
+
 
 class DeliveryController extends Controller
 {
     
+
     public function Create(){
-        return view('pages.deliverycons.create');
+        $myorders =Myorder::all();
+        return view('pages.deliverycons.create')->with('myorders',$myorders);
+        
     }
     public function createSubmit(Request $request){
 
         $this->validate(
             $request,
             [
-                'Dman_id'=>'required',
-                'Order_id'=>'required',
+                'Ord_id'=>'required',
+                'Pay_price'=>'required',
+                'D_username'=>'required',
                 'D_Status'=>'required',
                 'D_time'=>'required',
             ],
             [
-                'Dman_id.required'=>'Please put Delivery man ID!',
-                'Order_id.required'=>'Please put Order ID!',
+                'Ord_id.required'=>'Please put Order ID!',
+                'Pay_price.required'=>'Please put Payment Price!',
+                'D_username.required'=>'Please put username!',
                 'D_Status.required'=>'Please put Delivery Status!',
                 'D_time.required'=>'Please put Delivery Time!',
             ]
         );
 
         $var = new Delivery();
-        $var->Dman_id= $request->Dman_id;
-        $var->Order_id = $request->Order_id;
+        $var->Ord_id= $request->Ord_id;
+        $var->Pay_price= $request->Pay_price;
+        $var->D_username = $request->D_username;
         $var->D_Status = $request->D_Status;
         $var->D_time=$request->D_time;
         $var->save();
@@ -56,8 +65,9 @@ class DeliveryController extends Controller
 
     public function editSubmit(Request $request){
         $var = Delivery::where('id',$request->id)->first();
-        $var->Dman_id= $request->Dman_id;
-        $var->Order_id = $request->Order_id;
+        $var->Ord_id= $request->Ord_id;
+        $var->Pay_price= $request->Pay_price;
+        $var->D_username = $request->D_username;
         $var->D_Status = $request->D_Status;
         $var->D_time=$request->D_time;
         $var->save();
