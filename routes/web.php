@@ -27,6 +27,10 @@ Route::get('/', [PagesController::class,'home'])->name('home');
 //deliveryman routes
 Route::get('/user/create',[DmanController::class,'create'])->name('user.create');
 Route::post('/user/create',[DmanController::class,'createSubmit'])->name('user.create');
+Route::get('/user/list',[DmanController::class,'list'])->name('user.list');
+Route::get('/user/edit/{id}/{name}',[DmanController::class,'edit']);
+Route::post('/user/edit',[DmanController::class,'editSubmit'])->name('user.edit');
+Route::get('/user/delete/{id}/{name}',[DmanController::class,'delete']);
 
 //delivery routes
 Route::get('/deliverycon/create',[DeliveryController::class,'create'])->name('deliverycon.create');
@@ -61,7 +65,12 @@ Route::post('/orderdetail/edit',[OrderdetailController::class,'editSubmit'])->na
 Route::get('/orderdetail/delete/{id}/{name}',[OrderdetailController::class,'delete']);
 
 
-
+//Login routes
 Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'loginSubmit'])->name('login');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
+
+//Userdash
+Route::get('/user/dash', [PagesController::class,'userdash'])->name('userdash')->middleware('ValidUser');
+

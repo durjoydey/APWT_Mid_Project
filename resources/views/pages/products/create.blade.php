@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
     <form action="{{route('product.create')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
         {{csrf_field()}}
@@ -72,4 +73,6 @@
   </div>
         <input type="submit" class="btn btn-success" value="Add Product" >
     </form>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection

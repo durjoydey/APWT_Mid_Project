@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
     <form action="{{route('deliverycon.create')}}" class="col-md-6" method="post">
         <!-- Cross Site Request Forgery-->
+        <h1>Add Your Delivery</h1>
         {{csrf_field()}}
         
         <div>
@@ -12,8 +14,9 @@
             <option value="0" disable="true" selected="true">Select</option>
             @foreach($myorders as $myorder)
             <option value="{{$myorder->id}}">{{$myorder->O_id}}</option>
+            @endforeach
            </select>
-           @endforeach
+          
             @error('Ord_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
@@ -49,4 +52,6 @@
         <input type="submit" class="btn btn-success" value="Done" >
     </form>
 </div>
+<a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection

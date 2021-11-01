@@ -82,12 +82,18 @@ class DmanController extends Controller
         $var->U_profileimg= $request->U_profileimg;
         $var->save();
       
-        return "Information was updated successfuly";
+        return redirect()->route('user.list');
 
     }
     public function list(){
 
         $users = Systemuser::all();
         return view('pages.users.list')->with('users',$users);
+    }
+    public function delete(Request $request){
+        $var = Systemuser::where('id',$request->id)->first();
+        $var->delete();
+        return redirect()->route('user.list');
+
     }
 }

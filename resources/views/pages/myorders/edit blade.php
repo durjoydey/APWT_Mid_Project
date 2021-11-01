@@ -1,6 +1,6 @@
-@if(Session::get('user')) {{Session::get('user')}} 
-        <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
-
+@if(Session::get('user_id'))
+        
+        
 @extends('layouts.app')
 @section('content')
 <form action="{{route('product.edit')}}" class="col-md-6" method="post">
@@ -18,5 +18,5 @@
         <input type="submit" class="btn btn-success" value="Edit" >
     </form>
 @endsection
-
+<a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
 @endif

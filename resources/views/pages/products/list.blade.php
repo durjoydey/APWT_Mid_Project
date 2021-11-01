@@ -1,6 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
 <h1>All Products</h1>
     <table class="table table-borded">
         <tr>
@@ -29,5 +30,7 @@
             </tr>
         @endforeach
     </table>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection
 

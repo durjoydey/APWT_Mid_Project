@@ -1,5 +1,6 @@
-@if(Session::get('user')) {{Session::get('user')}} 
-        <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+
+@if(Session::get('user_name'))
+<a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
 
 @extends('layouts.app')
 @section('content')
@@ -50,9 +51,16 @@
             @enderror
         </div>
         <div class="col-md-4 form-group">
-            <span>Delivery Time</span>
-            <input type="time" name="D_time" value="{{$orderdetail->D_time}}" class="form-control">
-            @error('D_time')
+            <span>Product Size</span>
+            <input type="time" name="P_size" value="{{$orderdetail->P_size}}" class="form-control">
+            @error('P_size')
+                <span class="text-danger">{{$message}}</span>
+            @enderror
+        </div>
+        <div class="col-md-4 form-group">
+            <span>Username</span>
+            <input type="time" name="U_username" value="{{$orderdetail->U_username}}" class="form-control">
+            @error('U_username')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>

@@ -1,7 +1,8 @@
 
-
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
+<h1>See Your Deliveries so far</h1>
     <table class="table table-borded">
         <tr>
             <th>Order ID</th>
@@ -19,10 +20,10 @@
                 <td>{{$myorder->P_tprice}}</td>
                 <td>{{$myorder->Paymenttype}}</td>
                 <td>{{$myorder->O_status}}</td>
-                <td><a href="/myorder/edit/{{$myorder->id}}/{{$myorder->name}}">Edit</a></td>
-                <td><a href="/myorder/delete/{{$myorder->id}}/{{$myorder->name}}">Cancel Order</a></td>
             </tr>
         @endforeach
     </table>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+    @endif
 @endsection
 

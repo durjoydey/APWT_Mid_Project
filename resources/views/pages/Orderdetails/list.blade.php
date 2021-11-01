@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(Session::get('user_id'))
     <table class="table table-borded">
         <tr>
             <th>Order ID</th>
@@ -19,12 +20,14 @@
                 <td>{{$orderdetail->P_categories}}</td>
                 <td>{{$orderdetail->P_quantity}}</td>
                 <td>{{$orderdetail->P_tprice}}</td>
-                <td>{{$orderdetail->P_P_size}}</td>
+                <td>{{$orderdetail->P_size}}</td>
                 <td>{{$orderdetail->U_username}}</td>
-                <td><a href="/orderdetail/edit/{{$orderdetail->id}}/{{$orderdetail->name}}">Edit</a></td>
-                <td><a href="/orderdetail/delete/{{$orderdetail->id}}/{{$orderdetail->name}}">Delete</a></td>
+              
             </tr>
         @endforeach
     </table>
+    </table>
+    <a class="btn btn-danger" href="{{route('logout')}}">Log out </a>
+@endif
 @endsection
 

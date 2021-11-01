@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Models\Orderdetail;
 
+use App\Models\Myorder;
+
 class OrderdetailController extends Controller
 {
     
     public function Create(){
-        return view('pages.orderdetails.create');
+        $myorders = Myorder::all();
+        return view('pages.orderdetails.create')->with('myorders',$myorders);
+        
     }
     public function createSubmit(Request $request){
 
@@ -31,6 +35,7 @@ class OrderdetailController extends Controller
                 'P_name.required'=>'Please put Product Name!',
                 'P_price.required'=>'Please put Price!',
                 'P_categories.required'=>'Please put Category!',
+                'P_quantity.required'=>'Please put Price!',
                 'P_tprice.required'=>'Please put Total Price!',
                 'P_size.required'=>'Please put Product Size!',
                 'U_username.required'=>'Please put username!',
@@ -42,13 +47,14 @@ class OrderdetailController extends Controller
         $var->P_name = $request->P_name;
         $var->P_price = $request->P_price;
         $var->P_categories=$request->P_categories;
+        $var->P_quantity = $request->P_quantity;
         $var->P_tprice = $request->P_tprice;
         $var->P_size=$request->P_size;
         $var->U_username = $request->U_username;
         $var->save();
 
 
-        return "Done";      
+        return redirect()->route('orderdetail.list');     
     }
     public function list(){
 

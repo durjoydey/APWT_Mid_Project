@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Models\Myorder;
 
+use App\Models\Systemuser;
+
 class MyorderController extends Controller
 {
     
     public function Create(){
-        return view('pages.myorders.create');
+        $systemusers = Systemuser::all();
+
+        return view('pages.myorders.create')->with('systemusers',$systemusers);
+        
     }
     public function createSubmit(Request $request){
 
@@ -44,7 +49,7 @@ class MyorderController extends Controller
         $var->save();
 
 
-        return "Order Done";      
+        return redirect()->route('myorder.list');    
     }
     public function list(){
 
