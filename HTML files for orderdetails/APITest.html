@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<h3>Delivery API</h3>
+<body onload="loadDoc()">
+    <ul>
+        <li id="order_id"></li>   
+        <li id="P_name"></li>   
+        <li id="P_price"></li>   
+        <li id="P_categories"></li>   
+        <li id="P_quantity"></li>   
+        <li id="P_tprice"></li>   
+        <li id="P_size"></li>   
+        <li id="U_username"></li> 
+  
+      
+    </ul>
+
+    <script>
+        function loadDoc(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+                if(this.readyState = 4 && this.status == 200){
+
+                    var obj_arr = JSON.parse(this.responseText);
+                    document.getElementById("order_id").innerHTML = obj_arr[0].order_id;
+                    document.getElementById("P_name").innerHTML = obj_arr[0].P_name;
+                    document.getElementById("P_price").innerHTML = obj_arr[0].P_price;
+                    document.getElementById("P_categories").innerHTML = obj_arr[0].P_categories;
+                    document.getElementById("P_quantity").innerHTML = obj_arr[0].P_quantity;
+                    document.getElementById("P_tprice").innerHTML = obj_arr[0].P_tprice;
+                    document.getElementById("P_size").innerHTML = obj_arr[0].P_size;
+                    document.getElementById("U_username").innerHTML = obj_arr[0].U_username;
+            
+            
+               
+                }
+            };
+            xhttp.open("GET", "http://127.0.0.1:8000/api/orderdetail/list");
+            xhttp.send();
+        }
+    </script>
+    
+</body>
+</html>

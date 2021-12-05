@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<h3>Delivery API</h3>
+<body onload="loadDoc()">
+    <ul>
+        <li id="Ord_id"></li>   
+        <li id="Pay_price"></li>   
+        <li id="D_username"></li>   
+        <li id="D_Status"></li>   
+        <li id="D_time"></li>   
+  
+      
+    </ul>
+
+    <script>
+        function loadDoc(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+                if(this.readyState = 4 && this.status == 200){
+
+                    var obj_arr = JSON.parse(this.responseText);
+                    document.getElementById("Ord_id").innerHTML = obj_arr[0].Ord_id;
+                    document.getElementById("Pay_price").innerHTML = obj_arr[0].Pay_price;
+                    document.getElementById("D_username").innerHTML = obj_arr[0].D_username;
+                    document.getElementById("D_Status").innerHTML = obj_arr[0].D_Status;
+                    document.getElementById("D_time").innerHTML = obj_arr[0].D_time;
+            
+               
+                }
+            };
+            xhttp.open("GET", "http://127.0.0.1:8000/api/deliverycon/list");
+            xhttp.send();
+        }
+    </script>
+    
+</body>
+</html>

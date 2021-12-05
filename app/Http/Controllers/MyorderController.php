@@ -82,5 +82,21 @@ class MyorderController extends Controller
         return redirect()->route('myorder.list');
 
     }
+    public function APIList(){
+        return Myorder::all();
+    }
+    public function APIPost(Request $req){
+        $var = new Myorder();
+       
+        $var->O_id= $request->O_id;
+        $var->user_id = $request->user_id;
+        $var->U_username = $request->U_username;
+        $var->P_tprice=$request->P_tprice;
+        $var->Paymenttype = $request->Paymenttype;
+        $var->O_status=$request->O_status;
+        $var->save();
+
+        return $req;
+    }
 
 }

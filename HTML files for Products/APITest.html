@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<h3>Product API</h3>
+<body onload="loadDoc()">
+    <ul>
+        <li id="P_id"></li>   
+        <li id="P_name"></li>   
+        <li id="P_price"></li>   
+        <li id="Cat_id"></li>   
+        <li id="P_quantity"></li>   
+        <li id="P_details"></li>   
+        <li id="P_img1"></li>   
+        <li id="P_img2"></li>   
+        <li id="P_img3"></li>  
+  
+      
+    </ul>
+
+    <script>
+        function loadDoc(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+                if(this.readyState = 4 && this.status == 200){
+
+                    var obj_arr = JSON.parse(this.responseText);
+                    document.getElementById("P_id").innerHTML = obj_arr[0].P_id;
+                    document.getElementById("P_name").innerHTML = obj_arr[0].P_name;
+                    document.getElementById("P_price").innerHTML = obj_arr[0].P_price;
+                    document.getElementById("Cat_id").innerHTML = obj_arr[0].Cat_id;
+                    document.getElementById("P_quantity").innerHTML = obj_arr[0].P_quantity;
+                    document.getElementById("P_details").innerHTML = obj_arr[0].P_details;
+                    document.getElementById("P_img1").innerHTML = obj_arr[0].P_img1;
+                    document.getElementById("P_img2").innerHTML = obj_arr[0].P_img2;
+                    document.getElementById("P_img3").innerHTML = obj_arr[0].P_img3;
+            
+            
+               
+                }
+            };
+            xhttp.open("GET", "http://127.0.0.1:8000/api/product/list");
+            xhttp.send();
+        }
+    </script>
+    
+</body>
+</html>

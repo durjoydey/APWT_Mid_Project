@@ -88,5 +88,23 @@ class OrderdetailController extends Controller
         return redirect()->route('orderdetail.list');
 
     }
+    public function APIList(){
+        return Orderdetail::all();
+    }
+    public function APIPost(Request $req){
+        $var = new Orderdetail();
+       
+        $var->order_id= $request->order_id;
+        $var->P_name = $request->P_name;
+        $var->P_price = $request->P_price;
+        $var->P_categories=$request->P_categories;
+        $var->P_tprice = $request->P_tprice;
+        $var->P_size=$request->P_size;
+        $var->U_username = $request->U_username;
+        $var->save();
+
+        return $req;
+    }
+  
 
 }

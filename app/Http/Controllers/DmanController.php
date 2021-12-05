@@ -96,4 +96,24 @@ class DmanController extends Controller
         return redirect()->route('user.list');
 
     }
+
+    public function APIList(){
+        return Systemuser::all();
+    }
+    public function APIPost(Request $req){
+        $var = new Systemuser();
+       
+        $var->U_Name= $request->U_Name;
+        $var->U_phone = $request->U_phone;
+        $var->U_address = $request->U_address;
+        $var->U_username=$request->U_username;
+        $var->U_email= $request->U_email;
+        $var->U_password= $request->U_password;
+        $var->Usertype= $request->Usertype;
+        $var->U_profileimg= $request->U_profileimg;
+        $var->save();
+
+        return $req;
+    }
+  
 }
