@@ -27,12 +27,26 @@
             @enderror
         </div>
         <div>
-            <span>Category ID</span>
-            <input type="text" name="Cat_id" value="{{old('Cat_id')}}" class="form-control">
-            @error('Cat_id')
+            <span>Product Category:</span>
+        <select name="P_categories" id="">
+            <option value="" disable="true" selected="true">Select</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Desktops">Desktops</option>
+            <option value="Watches">Watches</option>
+            <option value="Smart phone">Smart phone</option>
+            <option value="Motor Bikes">Motor Bikes</option>
+            <option value="Smart & Android tvs">Smart & Android tvs</option>
+            <option value="Speakers">Speakers</option>
+            <option value="Headphones">Headphones</option>
+            <option value="Refrigerators">Refrigerators</option>
+            <option value="Split Ac">Split Ac</option>
+            <option value="Men Fashion">Men Fashion</option>
+            <option value="Women Fashion">Women Fashion</option>
+        </select>
+            @error('P_categories')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-        </div>
+</div>
         <div>
             <span>Product Quantity</span>
             <input type="number" name="P_quantity" value="{{old('P_quantity')}}" class="form-control">

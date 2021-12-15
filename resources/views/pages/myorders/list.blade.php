@@ -20,6 +20,7 @@
                 <td>{{$myorder->P_tprice}}</td>
                 <td>{{$myorder->Paymenttype}}</td>
                 <td>{{$myorder->O_status}}</td>
+                <td><a href="/myorder/edit/{{$myorder->id}}/{{$myorder->O_id}}">Change Status</a></td>
             </tr>
         @endforeach
     </table>

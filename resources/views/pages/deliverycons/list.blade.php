@@ -17,7 +17,6 @@
                 <td>{{$deliverycon->D_username}}</td>
                 <td>{{$deliverycon->D_Status}}</td>
                 <td>{{$deliverycon->D_time}}</td>
-                <td><a href="/deliverycon/edit/{{$deliverycon->id}}/{{$deliverycon->Ord_id}}">Edit</a></td>
                 <td><a href="/deliverycon/delete/{{$deliverycon->id}}/{{$deliverycon->Ord_id}}">Cancel Order</a></td>
             </tr>
          @endforeach

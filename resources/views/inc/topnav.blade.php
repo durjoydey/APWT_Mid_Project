@@ -8,5 +8,5 @@
 <a class="btn btn-primary" href="{{route('orderdetail.create')}}"> Order Details </a>
 <a class="btn btn-primary" href="{{route('orderdetail.list')}}"> Order Details List </a>
 <a class="btn btn-primary" href="{{route('myorder.create')}}"> Order Now </a>
-<a class="btn btn-primary" href="{{route('myorder.list')}}"> See all Deliveries </a>
+<a class="btn btn-primary" href="{{route('myorder.list')}}"> See all Delivery Requests </a>
 <a class="btn btn-success" href="{{route('login')}}"> Login </a>

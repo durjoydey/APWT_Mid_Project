@@ -35,13 +35,23 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="col-md-4 form-group">
-            <span>Delivary Status</span>
-            <input type="text" name="D_Status" value="{{old('D_Status')}}" class="form-control">
+        <div>
+            <span>Delivery Status</span>
+        <select name="D_Status" id="">
+            <option value="" disable="true" selected="true">Select</option>
+            <option value="Proccessing">Proccessing</option>
+            <option value="Order has been accepted">Order has been accepted</option>
+            <option value="2 days left">2 days left</option>
+            <option value="1 day left">1 day left</option>
+            <option value="2 hours away">2 hours away</option>
+            <option value="10 minutes away">10 minutes away</option>
+            <option value="2 minutes away">2 minutes away</option>
+            <option value="Delivery Done">Delivery Done</option>
+        </select>
             @error('D_Status')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-        </div>
+</div>
         <div class="col-md-4 form-group">
             <span>Delivery Time</span>
             <input type="time" name="D_time" value="{{old('D_time')}}" class="form-control">
