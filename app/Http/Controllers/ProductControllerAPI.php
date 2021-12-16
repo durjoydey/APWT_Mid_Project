@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 
-class ProductController extends Controller
+class ProductControllerAPI extends Controller
 {
-    
+       
     public function Create(){
         return view('pages.products.create');
     }
@@ -86,6 +86,24 @@ class ProductController extends Controller
         return redirect()->route('product.list');
 
     }
-   
 
+    public function APIList(){
+        return Product::all();
+    }
+    public function APIPost(Request $req){
+        $var = new Product();
+       
+        $var->P_id= $request->P_id;
+        $var->P_name = $request->P_name;
+        $var->P_price = $request->P_price;
+        $var->P_categories=$request->P_categories;
+        $var->P_quantity = $request->P_quantity;
+        $var->P_details = $request->P_details;
+        $var->P_img1=$request->P_img1;
+        $var->P_img2 = $request->P_img2;
+        $var->P_img3 = $request->P_img3;
+        $var->save();
+
+        return $req;
+    }
 }

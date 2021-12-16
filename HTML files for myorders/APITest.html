@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<h3>Delivery API</h3>
+<body onload="loadDoc()">
+    <ul>
+        <li id="O_id"></li>   
+        <li id="user_id"></li>   
+        <li id="U_username"></li>   
+        <li id="P_tprice"></li>   
+        <li id="Paymenttype"></li>   
+        <li id="O_status"></li>  
+  
+      
+    </ul>
+
+    <script>
+        function loadDoc(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+                if(this.readyState = 4 && this.status == 200){
+
+                    var obj_arr = JSON.parse(this.responseText);
+                    document.getElementById("O_id").innerHTML = obj_arr[0].O_id;
+                    document.getElementById("user_id").innerHTML = obj_arr[0].user_id;
+                    document.getElementById("U_username").innerHTML = obj_arr[0].U_username;
+                    document.getElementById("P_tprice").innerHTML = obj_arr[0].P_tprice;
+                    document.getElementById("Paymenttype").innerHTML = obj_arr[0].Paymenttype;
+                    document.getElementById("O_status").innerHTML = obj_arr[0].O_status;
+            
+               
+                }
+            };
+            xhttp.open("GET", "http://127.0.0.1:8000/api/myorder/list");
+            xhttp.send();
+        }
+    </script>
+    
+</body>
+</html>

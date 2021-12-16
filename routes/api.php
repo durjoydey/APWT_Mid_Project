@@ -2,11 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DmanController;
-use App\Http\Controllers\DeliveryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderdetailController;
-use App\Http\Controllers\MyorderController;
+use App\Http\Controllers\DmanControllerAPI;
+use App\Http\Controllers\DeliveryControllerAPI;
+use App\Http\Controllers\ProductControllerAPI;
+use App\Http\Controllers\OrderdetailControllerAPI;
+use App\Http\Controllers\MyorderControllerAPI;
+use App\Http\Controllers\LoginControllerAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +23,20 @@ use App\Http\Controllers\MyorderController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/user/list',[DmanController::class,'APIList']);
-Route::post('/user/create',[DmanController::class,'APIPost']);
-Route::get('/deliverycon/list',[DeliveryController::class,'APIList']);
-Route::post('/deliverycon/create',[DeliveryController::class,'APIPost']);
-Route::get('/product/list',[ProductController::class,'APIList']);
-Route::post('/product/create',[ProductController::class,'APIPost']);
-Route::get('/orderdetail/list',[OrderdetailController::class,'APIList']);
-Route::post('/orderdetail/create',[OrderdetailController::class,'APIPost']);
-Route::get('/myorder/list',[MyorderController::class,'APIList']);
-Route::post('/myorder/create',[MyorderController::class,'APIPost']);
+Route::get('/user/list',[DmanControllerAPI::class,'APIList'])->middleware('APIAuth');
+Route::post('/user/create',[DmanControllerAPI::class,'APIPost']);
+
+Route::get('/deliverycon/list',[DeliveryControllerAPI::class,'APIList'])->middleware('APIAuth');
+Route::post('/deliverycon/create',[DeliveryControllerAPI::class,'APIPost']);
+
+Route::get('/product/list',[ProductControllerAPI::class,'APIList'])->middleware('APIAuth');
+Route::post('/product/create',[ProductControllerAPI::class,'APIPost']);
+
+Route::get('/orderdetail/list',[OrderdetailControllerAPI::class,'APIList'])->middleware('APIAuth');
+Route::post('/orderdetail/create',[OrderdetailControllerAPI::class,'APIPost']);
+
+Route::get('/myorder/list',[MyorderControllerAPI::class,'APIList'])->middleware('APIAuth');
+Route::post('/myorder/create',[MyorderControllerAPI::class,'APIPost']);
+
+
+Route::post('/login',[LoginControllerAPI::class,'login']);

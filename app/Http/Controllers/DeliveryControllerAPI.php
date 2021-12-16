@@ -8,9 +8,7 @@ use App\Models\Delivery;
 
 use App\Models\Myorder;
 
-
-
-class DeliveryController extends Controller
+class DeliveryControllerAPI extends Controller
 {
     
 
@@ -80,6 +78,19 @@ class DeliveryController extends Controller
         return redirect()->route('deliverycon.list');
 
     }
-  
+    public function APIList(){
+        return Delivery::all();
+    }
+    public function APIPost(Request $req){
+        $var = new Delivery();
+       
+        $var->Ord_id= $request->Ord_id;
+        $var->Pay_price= $request->Pay_price;
+        $var->D_username = $request->D_username;
+        $var->D_Status = $request->D_Status;
+        $var->D_time=$request->D_time;
+        $var->save();
 
+        return $req;
+    }
 }
