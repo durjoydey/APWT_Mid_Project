@@ -38,5 +38,8 @@ Route::post('/orderdetail/create',[OrderdetailControllerAPI::class,'APIPost']);
 Route::get('/myorder/list',[MyorderControllerAPI::class,'APIList'])->middleware('APIAuth');
 Route::post('/myorder/create',[MyorderControllerAPI::class,'APIPost']);
 
+Route::get('/editorder/{id}',[MyorderControllerAPI::class,'edit']);
+Route::post('/updateorder/{id}',[MyorderControllerAPI::class,'update']);
+
 
 Route::post('/login',[LoginControllerAPI::class,'login']);
