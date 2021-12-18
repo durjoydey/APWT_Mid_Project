@@ -26,6 +26,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/user/list',[DmanControllerAPI::class,'APIList'])->middleware('APIAuth');
 Route::post('/user/create',[DmanControllerAPI::class,'APIPost']);
 
+Route::get('/edituser/{id}',[DmanControllerAPI::class,'edit']);
+Route::post('/updateuser/{id}',[DmanControllerAPI::class,'update']);
+
 Route::get('/deliverycon/list',[DeliveryControllerAPI::class,'APIList'])->middleware('APIAuth');
 Route::post('/deliverycon/create',[DeliveryControllerAPI::class,'APIPost']);
 
